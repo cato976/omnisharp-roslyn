@@ -30,7 +30,7 @@ namespace OmniSharp.Roslyn.CSharp.Services.BuildCommand
             {
                 return Path.Combine(
                         _config.MSBuildPath.Path ?? System.Runtime.InteropServices.RuntimeEnvironment.GetRuntimeDirectory(),
-                        "dotnet"
+                        "Msbuild"
                     );
             }
         }   
@@ -38,8 +38,9 @@ namespace OmniSharp.Roslyn.CSharp.Services.BuildCommand
         public string Arguments
         {
             get {
-                //return ("/m ") + "/nologo /v:q /property:GenerateFullPaths=true \"" + ProjectFile + "\"";
-                return "build";
+                return ("/m ") + "/nologo /v:q /property:GenerateFullPaths=true \"" + ProjectFile + "\"";
+                //return ("/m ") + "/nologo /v:q /property:GenerateFullPaths=true \"" + "\"";
+                //return "build";
             }
         }
 
@@ -66,7 +67,8 @@ namespace OmniSharp.Roslyn.CSharp.Services.BuildCommand
             quickFix.Add(new QuickFix()
             {
                 //Text = this.Executable.ApplyPathReplacementsForClient() + " " + this.Arguments + " /target:" + request.Type.ToString()
-                Text = this.Executable.ApplyPathReplacementsForClient() + " " + this.Arguments + " " + ProjectFile
+                //Text = this.Executable.ApplyPathReplacementsForClient() + " " + this.Arguments + " " + ProjectFile
+                Text = this.Executable.ApplyPathReplacementsForClient() + " " + this.Arguments //+ " " + ProjectFile
             });
             var response = new QuickFixResponse(quickFix);
             return response;
