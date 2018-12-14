@@ -31,13 +31,12 @@
   ],
 
     "TestCommands": {
-        "All": "dotnet test {{AssemblyPath}}",
-        "Fixture": "dotnet test {{AssemblyPath}} --filter={{TypeName}}",
-        "Single": "dotnet test {{AssemblyPath}} --filter={{TypeName}}"
+        "All": "nunit3-console.exe --noresult --noh {{AssemblyPath}}",
+        "Fixture": "nunit3-console.exe --noresult --noh {{AssemblyPath}} --test={{TypeName}}",
+        "Single": "nunit3-console.exe --noresult --noh {{AssemblyPath}} --test={{TypeName}}"
     },
 
   "MSBuildPath": {
-    "Path": "C://tools//Enterprise//MSBuild//15.0//Bin//"
   },
 
   "TextEditorOptions": {
